@@ -1,0 +1,52 @@
+---
+title: "googleVis_fundamentals"
+author: "Francesco Lescai"
+date: "1 June 2015"
+output: slidy_presentation
+---
+
+```{r libraries, echo=FALSE, message=FALSE}
+library(ggplot2)
+library(googleVis)
+library(datasets)
+suppressPackageStartupMessages(library(googleVis))
+op <- options(gvis.plot.tag="chart")
+```
+
+## Datasets
+
+We are going to use the usual chicken dataset
+
+```{r dataset}
+data("msleep")
+head(msleep)
+```
+
+## Bubble Chart
+
+```{r bubbledata}
+Bubble <- gvisBubbleChart(msleep, idvar="name", 
+                          xvar="sleep_total", 
+                          yvar="sleep_rem",
+                          colorvar="vore", 
+                          sizevar="bodywt",
+                          options = list(
+                            hAxis="{title: 'hours sleep', minValue:0, maxValue:22}",
+                            vAxis="{title: 'hours rem', minValue:0, maxValue:8}",
+                            width = 800, height=600,
+                            bubble="{
+                              textStyle:{fontSize: 0}
+                              }")
+                          )
+```
+
+
+## Plot Bubble
+
+```{r plotBubble, results='asis'}
+print(Bubble, "chart")
+```
+
+
+
+
