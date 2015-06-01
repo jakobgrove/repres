@@ -1,0 +1,77 @@
+---
+title: "Build a ggplot"
+author: "Francesco Lescai"
+date: "28 May 2015"
+output: slidy_presentation
+---
+
+## Choosing the data
+
+We will select as data what is coming from a dataset package
+
+```{r dataset}
+library(ggplot2)
+library(datasets)
+```
+
+And then we will select the dataset on chicken weights, which reports the weight of different chickens at different times with different type of diet
+
+```{r chicken}
+data(ChickWeight)
+```
+
+
+## Datasets
+
+You can check the structure of the dataset by using
+
+```{r structure}
+str(ChickWeight)
+```
+
+
+## Datasets 2
+
+or just by 
+
+```{r structure2}
+head(ChickWeight)
+```
+
+
+## Building the plot
+
+We can first observe the data using a simple plot
+
+```{r plotSimple}
+ggplot(ChickWeight, aes(x=Time, y=weight, color=Diet))+geom_point()
+```
+
+which is a bit messy because at each timepoint we will have several individuals with different weights and different diets
+
+
+## Building the plot 2
+
+We can therefore use the smoothing function to estimate the trend by distinguishing the diets
+
+```{r smoothPlot, message=FALSE}
+ggplot(ChickWeight, aes(x=Time, y=weight, color=Diet))+geom_smooth()
+```
+
+This gives us a better idea that the diet 3 is the one that at the end seems to increase the weight of the chickens...
+But we want to see this better
+
+## Scales
+we can therefore use the "scales" elemeent, to change the appearance of the legend and their names, and add to the geometry some more elements
+
+```{r scalesModify}
+ggplot(ChickWeight, aes(x=Time, y=weight, color=Diet))+
+  geom_smooth(size=1)+
+  scale_color_hue(
+    "what do they \neat?", 
+    breaks=c(1,2,3,4), 
+    labels=c("carrots","peas","pasta","seeds")
+    )
+```
+
+Et voilà
