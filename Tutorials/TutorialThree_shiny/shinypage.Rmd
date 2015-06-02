@@ -1,0 +1,67 @@
+---
+title: "ShinyDemo"
+author: "Francesco Lescai"
+date: "2 June 2015"
+output: html_document
+runtime: shiny
+---
+
+```{r data, echo=FALSE, message=FALSE}
+library(ggplot2)
+library(shiny)
+library(googleVis)
+library(datasets)
+data("Fruits")
+```
+
+
+This R Markdown document is made interactive using Shiny. Unlike the more traditional workflow of creating static reports, you can now create documents that allow your readers to change the assumptions underlying your analysis and see the results immediately. 
+
+To learn more, see [Interactive Documents](http://rmarkdown.rstudio.com/authoring_shiny.html).
+
+## Inputs and Outputs
+
+You can embed Shiny inputs and outputs in your document. Outputs are automatically updated whenever inputs change.  This demonstrates how a standard R plot made using the usual *ggplot* package can be made interactive by wrapping it in the Shiny `renderPlot` function. The `selectInput` and `sliderInput` functions create the input widgets used to drive the plot.
+
+```{r, echo=FALSE}
+inputPanel(
+  
+  sliderInput("integer", "Year:",
+                  min = 2008, max = 2010, value = 2008)
+)
+
+renderPlot({
+    selectedData <- subset(Fruits, Fruits$Year==input$integer)
+    p <- ggplot(selectedData, aes(x=Sales, y=Expenses, colour=Fruit))+
+      geom_point(aes(size=Profit))
+    print(p)
+  })
+```
+
+Of course embedding a plot in this way doesn't make it as nice as when we create a proper *Shiny App*.   
+This is demonstrated below.
+
+
+## Embedded Application
+
+It's also possible to embed an entire Shiny application within an R Markdown document using the `shinyAppDir` function.      
+The following example embeds a Shiny application located in another directory.      
+**CAVEAT**: You need to set the path of the app folder, and if you set a relative path you will more likely make your script portable!
+
+```{r, echo=FALSE}
+shinyAppDir(
+  appDir = "./shinyex/",
+  options=list(
+    width="100%", height=550
+  )
+)
+```
+
+Note the use of the `height` parameter to determine how much vertical space the embedded application should occupy.
+
+You can also use the `shinyApp` function to define an application inline rather then in an external directory.
+
+In all of R code chunks above the `echo = FALSE` attribute is used. This is to prevent the R code within the chunk from rendering in the document alongside the Shiny components.
+
+
+
