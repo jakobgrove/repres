@@ -8,7 +8,7 @@ data("Fruits")
 shinyServer(function(input, output) {
   
   output$plotOne <- renderPlot({
-    selectedData <- subset(Fruits, Fruits$Year==input$integer)
+    selectedData <- subset(Fruits, Fruits$Year==input$yearInput)
     p <- ggplot(selectedData, aes(x=Sales, y=Expenses, colour=Fruit))+
       geom_point(aes(size=Profit))
     print(p)
