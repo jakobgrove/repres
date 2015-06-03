@@ -2,7 +2,7 @@
 title: "googleVis_fundamentals"
 author: "Francesco Lescai"
 date: "1 June 2015"
-output: beamer_presentation
+output: slidy_presentation
 ---
 
 ```{r libraries, echo=FALSE, message=FALSE}
@@ -53,7 +53,7 @@ https://developers.google.com/chart/interactive/docs/gallery
 
 and understanding how the options are "translated" by the R package.
 
-## Line chart with two axis
+## Line chart with two axes
 
 Line charts in *ggplot2* can only have one Y axis, therefore this might be quite useful.
 
@@ -72,7 +72,7 @@ fruitLine <- gvisLineChart(subset(Fruits, Fruits$Fruit=="Apples"),
 
 parameters that can have more than one value per sub-options are wrapped in "[ ]".
 
-## Line chart with two axis (plot)
+## Line chart with two axes (plot)
 
 Here is the result of it:
 
