@@ -15,7 +15,7 @@ shinyUI(fluidPage(
       helpText("You can here select the Year to display
                in the scatter plot"),
       
-      sliderInput("integer", "Year:",
+      sliderInput("yearInput", "Year:",
                   min = 2008, max = 2010, value = 2008)
     ),
     
