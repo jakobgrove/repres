@@ -216,13 +216,15 @@ And try to achieve the same results, but using *googleVis*, and preparing a nice
 
 In order to achieve the best results:
 
-1. work alone for 20 minutes - to select one or two plots that represent a different aspect of the data      
+1. **14:15 - 14:40** work alone for 25 minutes - to select one or two plots that represent a different aspect of the data      
 Use the online Google API reference        
 https://developers.google.com/chart/interactive/docs/gallery        
 To select the plots, and decide customisations if needed.
 
-2. the selected groups meet and make together the best presentation ever (20 minutes)
-3. one per group makes a 3 minutes presentation 
-4. we discuss the results, and troubleshooting
+2. **14:40 - 15:00** the selected groups meet and make together the best presentation ever (20 minutes)
+
+3. **15:00 - 15:15** one per group makes a 3 minutes presentation
+
+4. **15:15 - 15:30** we discuss the results, and troubleshooting
 
 
