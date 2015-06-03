@@ -2,7 +2,7 @@
 title: "googleVis_fundamentals"
 author: "Francesco Lescai"
 date: "1 June 2015"
-output: slidy_presentation
+output: beamer_presentation
 ---
 
 ```{r libraries, echo=FALSE, message=FALSE}
