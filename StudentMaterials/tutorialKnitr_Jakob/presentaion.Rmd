@@ -1,0 +1,29 @@
+---
+title: "Amazing Car Graphics"
+author: "Helene & Jakob"
+date: "17. jun. 2015"
+output: slidy_presentation
+---
+
+
+## Slide with R Code and Output
+
+```{r}
+library(ggplot2)
+data(mpg)
+head(mpg)
+```
+
+## Linear correlation between city and highway milage
+
+```{r, echo=FALSE}
+ggplot(mpg, aes(y=hwy, x=cty)) +geom_jitter(aes(color = manufacturer)) +geom_smooth(method ="lm") #+coord_cartesian() +scale_color_gradient() #+theme_bw()
+```
+
+## Class trends?
+
+```{r, echo=FALSE}
+ggplot(mpg, aes(x=class)) + geom_bar() + facet_grid(year ~ .)
+```
+
+Well, actually we want a frequency plot and not counts...
