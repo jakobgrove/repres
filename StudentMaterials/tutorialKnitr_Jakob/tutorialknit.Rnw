@@ -1,0 +1,31 @@
+\documentclass{article}
+
+\begin{document}
+
+<<init>>=
+library(ggplot2)
+data(mpg)
+head(mpg)
+@
+
+<<explo1>>=
+ggplot(data = mpg, aes(x = cty, y = hwy)) + geom_jitter()
+@
+
+<<explo2>>=
+ggplot(data = mpg, aes(x = cty, y = hwy, color=manufacturer)) + geom_jitter() + geom_smooth(model="lm")
+@
+
+<<explo3>>=
+ggplot(mpg, aes(y=hwy, x=cty)) +geom_jitter(aes(color = manufacturer)) +geom_smooth(method ="lm") #+coord_cartesian() +scale_color_gradient() #+theme_bw()
+@
+
+%<<explo4>>=
+%ggplot(mpg, aes(x=year))  +geom_point(aes(y=hwy,color = manufacturer)) #+geom_jitter(aes(y=cty,color = manufacturer)) #+scale_shape_manual(values = c(3:7))
+%@
+<<explo5>>=
+ggplot(mpg, aes(x=class)) + geom_bar() + facet_grid(year ~ .)
+@
+
+
+\end{document}
