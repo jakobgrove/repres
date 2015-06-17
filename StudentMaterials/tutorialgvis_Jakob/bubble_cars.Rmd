@@ -1,0 +1,48 @@
+---
+title: "Cars in Motion"
+author: "Helene & Jakob"
+date: "June 17, 2015"
+output: slidy_presentation
+---
+
+```{r libraries, echo=FALSE, message=FALSE}
+library(ggplot2)
+library(googleVis)
+library(datasets)
+suppressPackageStartupMessages(library(googleVis))
+op <- options(gvis.plot.tag="chart")
+mpg$id <- paste("id_",c(1:nrow(mpg)), sep="")
+#mpg <- subset(mpg, cty != NA & hwy != NA & displ != NA)
+```
+
+## Bubbly experiments
+
+```{r bubbledataModified}
+Bubble <- gvisBubbleChart(mpg, idvar="id", 
+                          xvar="cty", 
+                          yvar="hwy",
+                          colorvar="manufacturer", 
+                          sizevar="displ",
+                          options=list(
+                            hAxis="{title:'City milage'}",
+                            vAxis="{title:'Highway milage'}",
+                            width=900,
+                            height=600,
+                            bubble="{
+                              textStyle:{
+                                fontSize: 12,
+                                color:'blue',
+                                auraColor: 'none',
+                                fontName: 'none'
+                              }
+                            }"
+                          )
+          )
+```
+
+## Here comes bubbles
+
+
+```{r motionPlot, results='asis'}
+print(Bubble, "chart")
+```
